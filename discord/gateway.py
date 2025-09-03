@@ -578,7 +578,9 @@ class DiscordWebSocket:
         elif event == 'RESUMED':
             self._resume_trace = data.get('_trace', [])
             _log.info('Gateway has successfully RESUMED session %s.', self.session_id)
-
+        elif event == "INTERACTION_CREATE":
+            # Dispatch a raw interaction event for user code
+            self._dispatch("interaction_create", data)
         try:
             func = self._discord_parsers[event]
         except KeyError:
