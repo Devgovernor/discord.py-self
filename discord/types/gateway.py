@@ -598,7 +598,16 @@ UserGuildSettingsEvent = UserGuildSettings
 
 class InteractionEvent(TypedDict):
     id: Snowflake
-    nonce: NotRequired[Snowflake]
+    application_id: Snowflake
+    type: int
+    data: dict
+    guild_id: NotRequired[Snowflake]
+    channel_id: NotRequired[Snowflake]
+    member: NotRequired[MemberWithUser]
+    user: NotRequired[PartialUser]
+    token: str
+    version: int
+
 
 
 InteractionModalCreateEvent = Modal
